@@ -177,8 +177,19 @@ public final class CustomDateUtils {
 	 * @return result of check
 	 */
 	public static boolean isLeapYear(int year) {
-		// TODO
-		return false;
+		if (year % 4 == 0) {
+			if (year % 100 == 0) {
+				// if the year can be evenly divided by 400, leap; otherwise
+				// common
+				return (year % 400 == 0);
+			} else {
+				// the year can be evenly divided by 4 but cannot by 100, leap
+				return true;
+			}
+		} else {
+			// 4 is not a divisor of the year, common
+			return false;
+		}
 	}
 
 	/**
