@@ -44,6 +44,7 @@ public class CustomDateBean implements Serializable {
 		this.year = year;
 	}
 
+	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 
@@ -52,5 +53,29 @@ public class CustomDateBean implements Serializable {
 		sb.append(String.format("%04d", this.year));
 
 		return sb.toString();
+	}
+
+	/**
+	 * Compare the custom date with this<br/>
+	 * 
+	 * @param date
+	 *            custom date object to be compared
+	 * @return 0 for equal, -1 for <code>date</code> greater, 1 for
+	 *         <code>this</code> greater
+	 */
+	public int compare(CustomDateBean date) {
+		if (date.getYear() != this.year) {
+			return this.year > date.getYear() ? 1 : -1;
+		}
+
+		if (date.getMonth() != this.month) {
+			return this.month > date.getMonth() ? 1 : -1;
+		}
+
+		if (date.getDay() != this.day) {
+			return this.day > date.getDay() ? 1 : -1;
+		}
+
+		return 0;
 	}
 }

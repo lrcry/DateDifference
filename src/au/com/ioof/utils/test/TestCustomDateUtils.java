@@ -166,4 +166,25 @@ public class TestCustomDateUtils {
 		assertFalse(CustomDateUtils.isStringEmpty(str));
 	}
 
+	@Test
+	public void testGetDateOffsetInYear() {
+		CustomDateBean date = new CustomDateBean();
+		date.setYear(1994);
+		date.setMonth(9);
+		date.setDay(21);
+		long off = CustomDateUtils.getDateOffsetInYear(date, false);
+		assertEquals(off, 264);
+		System.out.println(off);
+
+		date.setYear(1996);
+		off = CustomDateUtils.getDateOffsetInYear(date, true);
+		assertEquals(off, 265);
+		System.out.println(off);
+	}
+
+	@Test
+	public void testGetDayDifferenceBetweenYear() {
+		long diff = CustomDateUtils.getDayDifferenceBetweenYear(1992, 1997);
+		System.out.println("year diff 1993 to 1994 " + diff);
+	}
 }

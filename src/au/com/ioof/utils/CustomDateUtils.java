@@ -1,8 +1,11 @@
 package au.com.ioof.utils;
 
+import java.util.Map;
+
 import au.com.ioof.beans.CustomDateBean;
 import au.com.ioof.commons.Constants;
 import au.com.ioof.exceptions.InvalidInputException;
+import au.com.ioof.exceptions.LogicalException;
 import au.com.ioof.exceptions.UnsupportedDateFormatException;
 
 /**
@@ -12,6 +15,76 @@ import au.com.ioof.exceptions.UnsupportedDateFormatException;
  *
  */
 public final class CustomDateUtils {
+	public static long getDatesDifference(CustomDateBean laterDate, CustomDateBean earlierDate)
+			throws LogicalException {
+		long diff = 0;
+
+		if (laterDate.compare(earlierDate) <= 0) {
+			throw new LogicalException(
+					"The later date is no later than the earlier date given when calculating difference");
+		}
+
+		boolean isEarlierYearLeap = isLeapYear(earlierDate.getYear());
+		boolean isLaterYearLeap = isLeapYear(laterDate.getYear());
+		long offsetEarlierDate = getDateOffsetInYear(earlierDate, isEarlierYearLeap);
+		long offsetLaterDate = getDateOffsetInYear(laterDate, isLaterYearLeap);
+		long yearDiff = 0;
+		if (laterDate.getYear() != earlierDate.getYear()) {
+			yearDiff = getDayDifferenceBetweenYear(earlierDate.getYear(), laterDate.getYear());
+		} else {
+			// in the same year
+		}
+
+		diff = offsetLaterDate + yearDiff - offsetEarlierDate;
+
+		return diff;
+	}
+
+	/**
+	 * Get difference of days between two years<br/>
+	 * 
+	 * @param startYear
+	 * @param isStartYearLeap
+	 * @param endYear
+	 * @return
+	 */
+	public static long getDayDifferenceBetweenYear(int startYear, int endYear) {
+		long diff = 0;
+		boolean isYearLeap = false;
+
+		for (int i = startYear; i < endYear; ++i) {
+			isYearLeap = isLeapYear(i);
+
+			if (isYearLeap) {
+				diff += Constants.NUMBER_LEAP_YEAR_DAYS;
+				isYearLeap = false;
+			} else {
+				diff += Constants.NUMBER_COMMON_YEAR_DAYS;
+			}
+		}
+		return diff;
+	}
+
+	/**
+	 * Get the offset of the day in the year<br/>
+	 * 
+	 * @param customDate
+	 *            date object
+	 * @param isYearLeap
+	 *            leap year flag
+	 * @return offset of the day
+	 */
+	public static long getDateOffsetInYear(CustomDateBean customDate, boolean isYearLeap) {
+		long offset = 0;
+		Map<Integer, Integer> yearMonthDaysMap = Constants.YEAR_MONTH_DAYS_MAP
+				.get(isYearLeap ? Constants.YEAR_LEAP : Constants.YEAR_COMMON);
+		for (int i = 1; i < customDate.getMonth(); ++i) {
+			offset += yearMonthDaysMap.get(i);
+		}
+		offset += customDate.getDay();
+		return offset;
+	}
+
 	/**
 	 * Check date format<br/>
 	 * 
