@@ -43,4 +43,14 @@ public class CustomDateBean implements Serializable {
 	public void setYear(int year) {
 		this.year = year;
 	}
+
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append(String.format("%02d", this.day)).append(" ");
+		sb.append(String.format("%02d", this.month)).append(" ");
+		sb.append(String.format("%04d", this.year));
+
+		return sb.toString();
+	}
 }

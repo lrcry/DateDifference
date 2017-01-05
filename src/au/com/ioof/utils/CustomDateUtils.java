@@ -78,6 +78,20 @@ public final class CustomDateUtils {
 		int day = 0;
 		int month = 0;
 		int year = 0;
+
+		if (dateFieldArr[Constants.INDEX_DATE_FIELD_DAY_DD].length() != 2) {
+			throw new InvalidInputException(
+					"Invalid day [" + dateFieldArr[Constants.INDEX_DATE_FIELD_DAY_DD] + "], must be in format [DD]");
+		}
+		if (dateFieldArr[Constants.INDEX_DATE_FIELD_MONTH_MM].length() != 2) {
+			throw new InvalidInputException("Invalid month [" + dateFieldArr[Constants.INDEX_DATE_FIELD_MONTH_MM]
+					+ "], must be in format [MM]");
+		}
+		if (dateFieldArr[Constants.INDEX_DATE_FIELD_YEAR_YY].length() != 4) {
+			throw new InvalidInputException("Invalid year [" + dateFieldArr[Constants.INDEX_DATE_FIELD_YEAR_YY]
+					+ "], must be in format [YYYY]");
+		}
+
 		try {
 			// parse day
 			day = Integer.parseInt(dateFieldArr[Constants.INDEX_DATE_FIELD_DAY_DD]);

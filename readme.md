@@ -8,6 +8,20 @@ Hans Mong (Ran Meng)
 
 5 Jan 2017
 
+## Deploy & Run
+
+### In IDE (Eclipse)
+
+* Use Eclipse => Import => Existing projects into workspace to import the project
+
+* Run `au.com.ioof.main.DateDifferenceMain` as a Java Application
+	
+### In Terminal
+
+* Run `javac DateDifferenceMain` to build
+
+* Run `cat test_input > java DateDifferenceMain > test_output` to run
+
 ## Original Problem Spec
 
 Description:
