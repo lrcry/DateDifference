@@ -15,12 +15,8 @@ Hans Mong (Ran Meng)
 * Use Eclipse => Import => Existing projects into workspace to import the project
 
 * Run `au.com.ioof.main.DateDifferenceMain` as a Java Application
-	
-### In Terminal
 
-* Run `javac DateDifferenceMain` to build
-
-* Run `cat test_input > java DateDifferenceMain > test_output` to run
+* Type the data in an Eclipse Console to see the results
 
 ## Original Problem Spec
 
