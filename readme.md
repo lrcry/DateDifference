@@ -18,6 +18,18 @@ Hans Mong (Ran Meng)
 
 * Type the data in an Eclipse Console to see the results
 
+### Under Unix Terminal
+
+* Go to the project root directory
+
+* Execute `find src/ -name \*.java | grep -v test > allFiles.txt` to get all the non-test java files of the project
+
+* Execute `mkdir -p classes && javac @allFiles.txt -d classes/` to compile the project
+
+* Execute `java -cp classes/` to run the application with input from standard input
+
+* Execute `cat testInput.txt | java -cp classes/ au.com.ioof.main.DateDifferenceMain` to run the application with input from a file `testInput.txt`
+
 ## Original Problem Spec
 
 Description:
