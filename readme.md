@@ -8,6 +8,20 @@ Hans Mong (Ran Meng)
 
 5 Jan 2017
 
+## File Structure
+
+\_ DateDifference
+
+\|\_ src # source code files
+
+\|\_ classes # compiled classes files
+
+\|\_ allFiles.txt # all files to be compiled
+
+\|\_ testInput.data # test file
+
+\|\_ readme.md # readme
+
 ## Deploy & Run
 
 ### In IDE (Eclipse)
