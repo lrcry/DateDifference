@@ -28,7 +28,7 @@ Hans Mong (Ran Meng)
 
 * Execute `java -cp classes/` to run the application with input from standard input
 
-* Execute `cat testInput.txt | java -cp classes/ au.com.ioof.main.DateDifferenceMain` to run the application with input from a file `testInput.txt`
+* Execute `cat testInput.data | java -cp classes/ au.com.ioof.main.DateDifferenceMain` to run the application with input from a file `testInput.txt`
 
 ## Original Problem Spec
 
